@@ -40,6 +40,7 @@ MOUNTS["${ROOT}/ui-config.json"]="/data/config/auto/ui-config.json"
 MOUNTS["${ROOT}/styles.csv"]="/data/config/auto/styles.csv"
 MOUNTS["${ROOT}/extensions"]="/data/config/auto/extensions"
 MOUNTS["${ROOT}/config_states"]="/data/config/auto/config_states"
+MOUNTS["${ROOT}/extensions"]="/data/config/auto/extensions"
 
 # extra hacks
 MOUNTS["${ROOT}/repositories/CodeFormer/weights/facelib"]="/data/.cache"

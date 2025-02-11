@@ -25,6 +25,18 @@ RUN --mount=type=cache,target=/var/cache/apt \
   # extensions needs those
   ffmpeg libglfw3-dev libgles2-mesa-dev pkg-config libcairo2 libcairo2-dev build-essential
 
+# add for extensions 
+# control-net
+RUN apt-get install wget
+RUN pip install --upgrade typing_extensions
+RUN wget https://raw.githubusercontent.com/Mikubill/sd-webui-controlnet/main/requirements.txt -O controlnet_requirements.txt
+RUN pip install -r controlnet_requirements.txt
+RUN pip install insightface 
+RUN pip install onnxruntime-gpu
+
+COPY ./wheels/*.whl /tmp/wheels/
+RUN pip install /tmp/wheels/*.whl && \
+    rm -rf /tmp/wheels/
 
 WORKDIR /
 RUN --mount=type=cache,target=/root/.cache/pip \
