@@ -1,3 +1,27 @@
+# fork from Stable Diffusion WebUI Docker
+
+# description
+
+- fix docker bullding error
+```Dockerfile
+RUN pip install --upgrade typing_extensions
+```
+
+- startup reduce
+for ControlNet extension
+By installing the necessary files in bulding, the startup time can be reduced.
+```Dockerfile
+RUN wget https://raw.githubusercontent.com/Mikubill/sd-webui-controlnet/main/requirements.txt -O controlnet_requirements.txt
+RUN pip install -r controlnet_requirements.txt
+RUN pip install insightface 
+RUN pip install onnxruntime-gpu
+
+COPY ./wheels/*.whl /tmp/wheels/
+RUN pip install /tmp/wheels/*.whl && \
+    rm -rf /tmp/wheels/
+```
+
+
 # Stable Diffusion WebUI Docker
 
 Run Stable Diffusion on your machine with a nice UI without any hassle!
